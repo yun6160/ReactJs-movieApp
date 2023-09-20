@@ -1,43 +1,11 @@
 import { useState, useEffect } from "react";
+import Movie from "./components/Movie";
 
+//영화 전체를 보여주지 않고
+//router를 render 한다
+//router는 URL을 보고있는 component고
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-  const getMovies = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
-      )
-    ).json();
-    setMovies(json.data.movies);
-    setLoading(false);
-  };
-  useEffect(() => {
-    getMovies();
-  }, []);
-  console.log(movies);
-  return (
-    <div>
-      {loading ? (
-        <h1>loading...</h1>
-      ) : (
-        <div>
-          {movies.map((movie) => (
-            <div key={movie.id}>
-              <img src={movie.medium_cover_image} />
-              <h2>{movie.title}</h2>
-              <h5>{movie.summary}</h5>
-              <ul>
-                {movie.genres.map((genre, index) => (
-                  <li key={index}>{genre}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return null;
 }
 
 export default App;
