@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/movie",
+    path: "/movie/:id", //:id 로 변수명을 정해주면 param을 받을때도 id로 받는다 중요.
     element: <Detail />,
   },
 ]);
