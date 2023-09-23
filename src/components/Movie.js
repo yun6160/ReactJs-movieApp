@@ -1,10 +1,16 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+
 const Movie = ({ id, coverImage, title, summary, genres }) => {
   return (
-    <div>
-      <img src={coverImage} alt={title} />
+    <Row>
+      <Col xs={6} md={4}>
+        <Image src={coverImage} alt={title} rounded />
+      </Col>
       <h2>
         <Link to={`movie/${id}`}>{title}</Link>
       </h2>
@@ -14,7 +20,7 @@ const Movie = ({ id, coverImage, title, summary, genres }) => {
           <li key={genre}>{genre}</li>
         ))}
       </ul>
-    </div>
+    </Row>
   );
 };
 

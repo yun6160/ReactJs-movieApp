@@ -1,5 +1,11 @@
 import { useParams } from "react-router-dom"; //url에서 파라미터 받는법
 import { useState, useEffect } from "react";
+
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+
 const Detail = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -19,12 +25,14 @@ const Detail = () => {
   console.log(movie);
 
   return (
-    <div>
+    <Container>
       {loading ? (
         <h2>sorry...Loading...</h2>
       ) : (
-        <div>
-          <img src={movie.medium_cover_image} alt={movie.title} />
+        <Row>
+          <Col xs={6} md={4}>
+            <Image src={movie.medium_cover_image} alt={movie.title} rounded />
+          </Col>
           <h2>{movie.title}</h2>
           <h5>{movie.description_intro}</h5>
           <ul>
@@ -32,9 +40,9 @@ const Detail = () => {
               <li key={genre}>{genre}</li>
             ))}
           </ul>
-        </div>
+        </Row>
       )}
-    </div>
+    </Container>
   );
 };
 

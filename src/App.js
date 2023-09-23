@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+import Navibar from "./components/Navibar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-//영화 전체를 보여주지 않고
-//router를 render 한다
-//router는 URL을 보고있는 component고
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +17,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div>
+      <Navibar />
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
