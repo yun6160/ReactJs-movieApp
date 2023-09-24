@@ -4,22 +4,35 @@ import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
+import Accordion from "react-bootstrap/Accordion";
 
 const Movie = ({ id, coverImage, title, summary, genres }) => {
+  const StyleDiv = {
+    marginBottom: "20px",
+  };
   return (
-    <Row>
+    <Row style={StyleDiv}>
       <Col xs={6} md={4}>
         <Image src={coverImage} alt={title} rounded />
       </Col>
-      <h2>
-        <Link to={`movie/${id}`}>{title}</Link>
-      </h2>
-      <h5>{summary}</h5>
-      <ul>
-        {genres.map((genre) => (
-          <li key={genre}>{genre}</li>
-        ))}
-      </ul>
+      <Accordion defaultActiveKey="0">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            <Link to={`movie/${id}`}>{title}</Link>
+          </Accordion.Header>
+          <Accordion.Body>{summary}</Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>Genre</Accordion.Header>
+          <Accordion.Body>
+            <ul>
+              {genres.map((genre) => (
+                <li key={genre}>{genre}</li>
+              ))}
+            </ul>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
     </Row>
   );
 };
