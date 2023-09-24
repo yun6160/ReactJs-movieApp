@@ -7,7 +7,7 @@ const Navibar = () => {
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href={`${process.env.PUBLIC_URL}/`}>
           <img
             src={logo}
             width="30"
